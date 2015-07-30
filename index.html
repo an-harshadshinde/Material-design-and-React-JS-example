@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lift on touch</title>
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <script src="lib/react/react.js"></script>
+    <script src="lib/react/JSXTransformer.js"></script>
+    <script src="lib/react/react-with-addons.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  </head>
+  <body>
+    <script type="text/jsx">
+      var ServiceChooser = React.createClass({
+        render: function() {
+          var self = this;
+          var services = this.props.items.map(function(s){
+            return <Service/>;
+          });
+          return <div>
+          <div className="inner-wrap">
+          {services}
+          </div>
+          </div>;
+        }
+      });
+      var Service = React.createClass({
+        clickHandler: function(e){
+          var $ink, x, y, ink_diameter;
+          $(e.currentTarget).removeClass('raised');
+          // avoid adding multiple ink elements
+          if (!$(e.currentTarget).find('.ink').length) { 
+            // no ink element added yet
+            $(e.currentTarget).prepend('<span class="ink"></span>');
+              $ink = $(e.currentTarget).find('.ink');
+          } else { // ink element added
+              $ink = $(e.currentTarget).find('.ink');
+              $ink.removeClass('spill');
+          }
+          ink_diameter = Math.max($(e.currentTarget).outerWidth(), $(e.currentTarget).outerHeight());
+          // x and y coordinates for ink element
+          x = e.pageX - $(e.currentTarget).offset().left-(ink_diameter/2);
+          y = e.pageY - $(e.currentTarget).offset().top-(ink_diameter/2);
+          $ink.css({
+            top      : y,
+            left     : x,
+            width    : ink_diameter,
+            height   : ink_diameter
+          }).addClass( 'spill' );
+          $(e.currentTarget).addClass('raised');
+          },
+          render: function(){
+            return  <a href="#" onClick={this.clickHandler} className="button button-ink"></a>;
+          }
+      });
+      var services = [{},{},{}];
+      React.render(
+        <ServiceChooser items={ services } />,
+        document.body
+        );
+    </script>
+  </body>
+</html>

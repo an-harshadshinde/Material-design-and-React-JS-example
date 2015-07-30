@@ -1,0 +1,128 @@
+.outer-wrap {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #00bcd4;
+}
+
+.title {
+  color: #fff;
+  font-size: 1.4em;
+  font-weight: 300;
+}
+
+.title-accent {
+  border-bottom: 1px solid #fffde7;
+}
+
+.inner-wrap {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  max-width: 280px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em 0;
+ 
+}
+
+.button {
+  position: relative;
+  overflow: hidden;
+  margin: 0.5em 0;
+  padding: 1.5em 0.75em;
+  width: 80%;
+  color: rgba(0, 0, 0, 0.56);
+  font-size: 1.1em;
+  font-weight: 500;
+  background: #fff;
+  border-radius: 0.25em;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button-ink {
+          box-shadow: 1px 1px 1px 1px #ccc;
+}
+.button-ink.raised {
+  -webkit-animation: raised 0.45s ease;
+          animation: raised 0.45s ease;
+}
+
+.ink {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+          transform: scale(0);
+  border-radius: 51%;
+  background: #ccc;
+}
+.ink.spill {
+  -webkit-animation: spill 0.65s ease;
+          animation: spill 0.65s ease;
+}
+
+@-webkit-keyframes spill {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(3.5);
+            transform: scale(3.5);
+  }
+}
+
+@keyframes spill {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(3.5);
+            transform: scale(3.5);
+  }
+}
+@-webkit-keyframes raised {
+  100% {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+}
+@keyframes raised {
+  100% {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+}
+/* resets */
+html {
+  font: 1em/1.4em sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
